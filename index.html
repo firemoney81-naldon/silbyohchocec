@@ -1,23 +1,581 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
+
+    <!-- Schema.org Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "비갱신형 실비보험 비교센터",
+      "url": "https://yourdomain.com",
+      "description": "2026년 최신 비갱신형 실비보험 비교 가이드. 갱신형과의 차이점 분석, 합리적인 보험료 설계, 가입 조건, 청구 방법까지 전문가가 A부터 Z까지 알려드립니다.",
+      "serviceType": "비갱신형 실비보험 컨설팅",
+      "provider": {
+        "@type": "Organization",
+        "name": "보험 비교 플랫폼",
+        "url": "https://yourdomain.com",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+82-50-1234-5678",
+          "contactType": "customer service"
+        }
+      },
+      "areaServed": "대한민국 전역",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "실비보험 상품 종류",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "비갱신형 실비보험"
+            },
+            "description": "장기적인 관점에서 보험료 인상 없이 안정적인 보장을 원하는 고객을 위한 상품"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "갱신형 실비보험"
+            },
+            "description": "초기 보험료가 저렴하며 단기적인 보장을 원하는 고객을 위한 상품"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "4세대 실비보험"
+            },
+            "description": "2021년 7월 이후 출시된 최신 실비보험으로, 갱신 주기가 짧고 자기부담금이 상향된 상품"
+          }
+        ]
+      }
+    }
+    </script>
+
+    <style>
+        /* CSS from original template with modifications for finance/insurance topic */
+        body {
+            font-family: "Noto Sans KR", sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+            background-color: #f7f9fc; /* 부드러운 배경색 */
+            color: #333;
+            word-break: keep-all; /* 한글 단어 단위 줄바꿈 */
+        }
+        header {
+            background-color: #004d99; /* 금융/보험 관련 신뢰의 파란색 */
+            color: white;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin: 0.5rem 0 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin: 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+            font-size: 1.1rem;
+        }
+        nav a:hover {
+            color: #b3d1ff; /* 밝은 파란색 */
+            transform: translateY(-2px);
+        }
+        main {
+            max-width: 1100px; /* 너비 확장 */
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.08);
+            border-radius: 15px;
+        }
+        h1, h2 {
+            color: #003366; /* 진한 남색 */
+            font-weight: 700;
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-bottom: 3px solid #e0f0ff;
+        }
+        h2 {
+            font-size: 2rem;
+        }
+        h3 {
+            color: #004d99;
+            font-size: 1.6rem;
+            margin-top: 1.8rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f4f8;
+        }
+        p {
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2.5rem 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            padding: 1.1rem;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+        }
+        th {
+            background-color: #e6f2ff; /* 밝은 배경 */
+            color: #003366;
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+        tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+        tr:hover {
+            background-color: #f5fafd;
+        }
+
+        /* FAQ Accordion */
+        dl dt {
+            font-weight: 700;
+            margin-top: 1.5rem;
+            cursor: pointer;
+            color: #0066cc;
+            background-color: #f5fafd;
+            padding: 1.2rem;
+            border-left: 5px solid #0066cc;
+            transition: background-color 0.3s ease, border-left 0.3s ease;
+            border-radius: 4px;
+        }
+        dl dt:hover {
+            background-color: #e6f2ff;
+        }
+        dl dt.active {
+            border-left: 5px solid #ff6600;
+            background-color: #fffaf0;
+        }
+        dl dd {
+            margin: 0.5rem 0 1.5rem 1rem;
+            padding: 1rem;
+            border-left: 2px dashed #ccc;
+            display: none;
+            background-color: #fefefe;
+            font-size: 0.95rem;
+        }
+        dl dt.active + dd {
+            display: block;
+        }
+
+        /* CTA button refinement */
+        .cta-button {
+            display: block; /* 블록 요소로 변경하여 너비 100% 사용 */
+            background-color: #ff6600;
+            color: white;
+            font-weight: 700;
+            padding: 1.2rem 3rem;
+            border-radius: 10px;
+            text-decoration: none;
+            margin: 2rem auto; /* 가운데 정렬 */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            max-width: 500px; /* 최대 너비 설정 */
+        }
+        .cta-button:hover {
+            background-color: #e65c00;
+            transform: translateY(-2px);
+        }
+
+        /* Keyword tags refinement */
+        .keyword-tags {
+            margin: 2rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+        .keyword-tags a {
+            background-color: #e0f0ff;
+            color: #0066cc;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .keyword-tags a:hover {
+            background-color: #b3d1ff;
+            transform: scale(1.05);
+        }
+
+        /* Footer refinement */
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            font-size: 0.9rem;
+            color: #777;
+            background-color: #e0eaf1;
+            margin-top: 3rem;
+            border-top: 1px solid #d0dbe4;
+        }
+        .external-link {
+            display: inline-block;
+            color: #0066cc;
+            font-weight: 500;
+            margin-top: 1rem;
+            text-decoration: underline;
+        }
+        .form-section {
+            background-color: #f8f8f8;
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin: 2.5rem 0;
+            border: 1px solid #e0e0e0;
+        }
+        .form-section input[type="text"], .form-section input[type="email"], .form-section input[type="tel"] {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+        .form-section button {
+            background-color: #0066cc;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+        .form-section button:hover {
+            background-color: #004d99;
+        }
+        .image-container {
+            width: 100%;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* New styles for professionalism and visual appeal */
+        .highlight {
+            background-color: #e6f7ff;
+            padding: 1rem 1.5rem;
+            border-left: 5px solid #0066cc;
+            border-radius: 6px;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .bullet-point {
+            list-style: none;
+            padding-left: 0;
+        }
+        .bullet-point li {
+            position: relative;
+            margin-bottom: 10px;
+            padding-left: 20px;
+        }
+        .bullet-point li::before {
+            content: "\2713"; /* 체크마크 유니코드 */
+            color: #ff6600;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+
+  <header>
+    <h1>비갱신형 실비보험 비교 | 2026년 가입 조건 및 가격 추천</h1>
     <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+      <ul>
+        <li><a href="#intro">비갱신형이란?</a></li>
+        <li><a href="#compare">갱신형 vs 비갱신형</a></li>
+        <li><a href="#4gen">4세대 실비보험 분석</a></li>
+        <li><a href="#tip">가입 노하우</a></li>
+        <li><a href="#faq">자주 묻는 질문</a></li>
+        <li><a href="#contact">무료 견적 신청</a></li>
+      </ul>
     </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+  </header>
+
+  <main>
+    <section id="intro">
+      <h2>비갱신형 실비보험, 왜 지금 선택해야 할까?</h2>
+      <p>실손의료보험(실비보험)은 '제2의 건강보험'이라 불릴 만큼 국민 대다수가 가입한 필수 보험 상품입니다. 하지만 최근 몇 년간 실비보험의 손해율 악화로 인해 보험료가 지속적으로 상승하면서, 많은 가입자들이 **갱신형 실비보험**의 급격한 인상 폭에 부담을 느끼고 있습니다. 특히 4세대 실비보험이 도입된 2021년 7월 이후, 기존 1~3세대 가입자들은 보험료 부담을 줄이기 위한 방안으로 **비갱신형 실비보험**으로의 전환이나 신규 가입을 고려하고 있습니다.</p>
+
+      <div class="highlight">
+        <p><strong>주요 키워드: 비갱신형 실비보험</strong></p>
+        <p>비갱신형 실비보험은 가입 시 정해진 보험료가 만기 시까지 변동되지 않는 상품을 의미합니다. 갱신형이 일정 기간(예: 1년, 3년, 5년)마다 보험료가 재산정되는 것과 달리, 비갱신형은 장기적인 관점에서 안정적인 보험료 납입이 가능하여 미래 재정 계획 수립에 유리합니다. 다만, 4세대 실비보험은 기본적으로 갱신형으로만 판매되므로, 비갱신형 실비보험은 주로 4세대 실비보험의 특약 형태로 존재하거나, 일부 회사의 특정 상품에서 찾아볼 수 있습니다. 따라서 현 시점에서 비갱신형 실비보험을 찾는 것은 갱신 주기를 최소화하거나 보험료 인상률이 낮은 상품을 찾는 것이라 할 수 있습니다.</p>
+      </div>
+
+      <p>2026년 현재, 급격한 물가 인상과 의료비 상승은 가계 경제에 큰 부담으로 작용하고 있습니다. 이에 따라 보험료 부담이 고정되거나 인상폭이 매우 낮은 **비갱신형 실비보험**에 대한 수요가 더욱 증가하고 있습니다. 본 가이드에서는 2026년 최신 기준으로 **비갱신형 실비보험**과 갱신형 상품을 상세히 비교하고, 합리적인 **실비보험 가입 조건** 및 **실비보험 가격**을 찾는 노하우를 제공합니다.</p>
+    </section>
+
+    <div class="form-section">
+        <h3>무료 비갱신형 실비보험 견적 신청</h3>
+        <p>1분만에 2026년 최신 비갱신형 실비보험 상품을 비교하고 나에게 맞는 최적의 보험료를 알아보세요.</p>
+        <form action="#" method="post">
+            <input type="text" placeholder="이름을 입력해주세요" required>
+            <input type="tel" placeholder="연락처를 입력해주세요 (010-xxxx-xxxx)" pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}" required>
+            <input type="text" placeholder="생년월일 (예: 19901020)" required>
+            <label><input type="checkbox"> 개인정보 수집 및 이용 동의</label><br>
+            <button type="submit" class="cta-button">무료 견적 신청</button>
+        </form>
+    </div>
+
+    <section id="compare">
+      <h2>핵심 비교 분석: 갱신형 vs 비갱신형 실비보험</h2>
+      <p>실비보험을 선택할 때 가장 중요한 고민은 '갱신형으로 할 것인가, 비갱신형으로 할 것인가'입니다. 두 가지 유형은 장단점이 명확하며, 가입자의 나이, 재정 상황, 건강 상태에 따라 적절한 선택이 달라질 수 있습니다. 특히 40대 이상의 가입자라면 **비갱신형 실비보험**을 통해 장기적인 보험료 부담을 줄이는 것이 현명할 수 있습니다. 아래 비교표를 통해 자세히 살펴보겠습니다.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>비갱신형 (4세대 실비보험 특약 형태)</th>
+            <th>갱신형 (일반적인 4세대 실비보험)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>보험료 변동</strong></td>
+            <td>가입 시점의 보험료가 만기 시까지 고정됩니다. (일부 특약에 한해 가능)</td>
+            <td>갱신 주기(보통 5년)마다 보험료가 재산정되어 인상될 수 있습니다.</td>
+          </tr>
+          <tr>
+            <td><strong>초기 보험료</strong></td>
+            <td>갱신형보다 초기 보험료가 다소 높게 책정될 수 있습니다.</td>
+            <td>초기 보험료가 상대적으로 저렴합니다.</td>
+          </tr>
+          <tr>
+            <td><strong>총 납입액 (장기)</strong></td>
+            <td>총 납입액은 갱신형보다 적을 가능성이 높습니다. (장기 유지 시 유리)</td>
+            <td>장기간 유지 시 나이가 들수록 보험료 인상 폭이 커져 총 납입액이 높을 수 있습니다.</td>
+          </tr>
+          <tr>
+            <td><strong>보험료 안정성</strong></td>
+            <td>매우 안정적입니다. 미래 재정 계획 수립에 용이합니다.</td>
+            <td>불안정합니다. 예상치 못한 보험료 급증으로 부담을 느낄 수 있습니다.</td>
+          </tr>
+          <tr>
+            <td><strong>추천 대상</strong></td>
+            <td>장기간 보험을 유지할 계획인 20~40대, 재정 안정성을 추구하는 가입자</td>
+            <td>단기적으로 저렴한 보험료를 원하는 10~20대, 소득 변동이 적은 가입자</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>비갱신형 실비보험의 장기적 이점 분석 (가상 시뮬레이션)</h3>
+      <p><strong>비갱신형 실비보험</strong>은 초기 보험료가 다소 높더라도 장기간 유지 시 갱신형보다 총 납입액이 적어지는 '교차점'이 존재합니다. 특히 40대에 가입하여 80세까지 보장받는다고 가정할 경우, 갱신형의 경우 50대 이후부터 급격한 보험료 인상이 발생할 수 있습니다. 반면 비갱신형은 보험료가 일정하게 유지되어 30~40년 후에는 갱신형 대비 50% 이상의 비용 절감 효과를 볼 수도 있습니다. (물론 상품의 세부 조건과 인상률에 따라 달라질 수 있습니다.)</p>
+
+      <div class="image-container">
+          <!-- 실제 그래프가 아닌 텍스트 기반 시각화 -->
+          <p><strong>[가상 시뮬레이션: 40세 남성, 30년 유지 시 보험료 추이]</strong></p>
+          <pre style="text-align: left; background-color: #f4f4f4; padding: 15px; border-radius: 8px; font-size: 0.9rem;">
+            나이       |   갱신형 보험료 (연간)   |   비갱신형 보험료 (연간)
+            ----------|--------------------------|--------------------------
+            40세       |       300,000원          |       400,000원
+            50세       |       450,000원          |       400,000원
+            60세       |       700,000원          |       400,000원
+            70세       |     1,100,000원          |       400,000원
+            80세       |     1,500,000원          |       400,000원
+            ---------------------------------------------------------------
+            총 납입액   |     22,700,000원         |     16,000,000원 (총 670만원 절약)
+          </pre>
+      </div>
+
+      <p>이러한 장기적 관점에서의 이점을 고려하면, **비갱신형 실비보험**은 젊을 때 가입할수록 더욱 유리합니다. 특히 갱신형의 경우 갱신 시점에 보험사의 손해율이 반영되어 보험료가 인상되기 때문에, 나이가 들어 의료 이용이 잦아질수록 보험료 인상 폭이 커지는 악순환을 경험할 수 있습니다. 따라서 안정적인 노후 대비를 위해서는 비갱신형이 합리적인 선택이 될 수 있습니다.</p>
+      <div class="keyword-tags" aria-label="연관 검색 키워드">
+        <a href="#compare">갱신형 비갱신형 차이</a>
+        <a href="#4gen">4세대 실비보험</a>
+        <a href="#4gen">실비보험 단독형</a>
+        <a href="#tip">실비보험 가격</a>
+        <a href="#tip">유병자 실비보험</a>
+        <a href="#faq">실비보험 청구</a>
+        <a href="#contact">실비보험 비교견적</a>
+        <a href="#tip">실비보험 재가입</a>
+        <a href="#compare">실비보험 보험료 인상률</a>
+      </div>
+    </section>
+
+    <section id="4gen">
+      <h2>2026년 4세대 실비보험 시대, 비갱신형은 어떻게 적용될까?</h2>
+      <p>2021년 7월부터 새로운 <strong>4세대 실비보험</strong>이 도입되었습니다. 4세대 실비보험은 기존 1~3세대 상품과 비교해 몇 가지 큰 변화가 있습니다. 가장 큰 변화는 '급여 부분'과 '비급여 부분'에 대한 자기부담금이 상향되었다는 점입니다. 또한, '비급여 특약'의 경우 보험료 차등제가 적용되어 비급여 의료 이용량이 많은 가입자는 보험료가 할증될 수 있습니다. 이러한 변화 속에서 <strong>비갱신형 실비보험</strong>의 가입 조건도 달라졌습니다.</p>
+
+      <h3>4세대 실비보험의 주요 변화와 비갱신형 특약</h3>
+      <ul class="bullet-point">
+        <li><strong>보험료 차등제 적용:</strong> 4세대 실비보험의 가장 큰 특징은 비급여 항목에 대한 보험료 차등제입니다. 1년간 비급여 항목을 많이 이용한 가입자는 다음 해 보험료가 할증될 수 있습니다. 이는 보험료 인하를 유도하고 과도한 의료 쇼핑을 방지하려는 목적으로 도입되었습니다.</li>
+        <li><strong>재가입 주기 단축:</strong> 기존 실비보험은 15년 단위로 재가입했으나, 4세대 실비보험은 5년마다 재가입을 해야 합니다. 이는 상품의 보장 내용이나 약관이 5년 주기로 변경될 수 있음을 의미합니다.</li>
+        <li><strong>자기부담금 상향:</strong> 급여 항목은 20%로, 비급여 항목은 30%로 자기부담금이 증가했습니다. 이는 가입자의 부담을 늘려 보험료를 낮추는 효과를 가져왔습니다.</li>
+      </ul>
+
+      <p>4세대 실비보험의 도입으로 인해, 순수한 의미의 '비갱신형 실비보험'은 찾아보기 어려워졌습니다. 하지만 보험사들은 '주계약'에 한하여 <strong>비갱신형</strong>으로 설계할 수 있는 옵션을 제공하거나, 특약을 통해 갱신 주기를 길게 가져가는 상품을 출시하고 있습니다. 즉, 갱신 주기가 1년인 갱신형보다는 갱신 주기가 20년 이상인 상품을 선택하는 것이 사실상 '비갱신형'에 가깝다고 볼 수 있습니다. 2026년 현재 각 보험사의 상품별로 이러한 비갱신형 특약을 제공하는지 여부를 꼼꼼히 확인해야 합니다.</p>
+
+      <div class="form-section">
+        <h3>나에게 맞는 4세대 실비보험 견적 확인하기</h3>
+        <p>4세대 실비보험은 비급여 항목에 따라 보험료가 달라질 수 있습니다. 정확한 견적을 통해 나에게 맞는 최적의 보험료를 확인하세요.</p>
+        <form action="#" method="post">
+            <input type="text" placeholder="현재 가입 중인 보험사 (없으면 '없음' 입력)" required>
+            <input type="text" placeholder="최근 1년간 비급여 치료 여부 (예: '있음', '없음')" required>
+            <button type="submit">맞춤형 견적 요청</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="tip">
+      <h2>비갱신형 실비보험, 현명하게 가입하는 5가지 노하우</h2>
+      <p>수많은 보험 상품 중에서 나에게 가장 적합하고 저렴한 <strong>비갱신형 실비보험</strong>을 찾는 것은 쉽지 않습니다. 다음은 2026년 기준으로 **실비보험 가입 조건**을 고려한 현명한 선택 노하우입니다.</p>
+
+      <h3>1. '갱신형 vs 비갱신형' 가이드라인 설정하기</h3>
+      <p>가장 먼저 본인의 나이와 경제 상황을 고려하여 갱신형과 비갱신형 중 어떤 것이 유리한지 판단해야 합니다. <strong>20대 가입자</strong>의 경우 초기 보험료가 저렴한 갱신형을 선택하는 것이 유리할 수 있습니다. 하지만 <strong>40대 이상 가입자</strong>는 갱신형 보험료가 급격히 인상될 가능성이 높으므로, 초기 비용 부담이 있더라도 **비갱신형 실비보험**을 선택하여 노후의 경제적 부담을 줄이는 것이 현명합니다. 장기간 유지할수록 비갱신형의 가치가 높아집니다.</p>
+
+      <h3>2. 2026년 최신 상품 비교는 필수 (최소 3개 이상 비교)</h3>
+      <p>**비갱신형 실비보험**을 취급하는 회사가 많지 않으므로, 모든 회사의 상품을 비교하는 것이 중요합니다. **실비보험 가격**은 보험사별로 다를 수 있으며, 특히 특약이나 할인 조건에 따라 큰 차이가 발생할 수 있습니다. 한 곳의 견적만으로는 합리적인 선택이 어렵습니다. 최소 3개 이상의 보험사 상품을 비교하여 최저가 견적을 받는 것이 중요합니다.</p>
+      <div class="highlight">
+        <p><strong>참고: 보험료 비교 시 고려 사항</strong></p>
+        <p>보험료 외에도 보장 내용, 자기부담금 비율, 면책 기간, 특약 조건 등을 종합적으로 비교해야 합니다. 단순히 **실비보험 가격**만 보고 결정하면, 나중에 필요한 보장을 받지 못하는 경우가 발생할 수 있습니다.</p>
+      </div>
+
+      <h3>3. 유병자 실비보험 가입 조건 확인하기</h3>
+      <p>**유병자 실비보험**은 일반 실비보험 가입이 어려운 유병력자들을 위한 상품입니다. 만성 질환이 있거나 최근 5년 이내 입원, 수술 경험이 있는 경우에도 가입이 가능하도록 문턱을 낮춘 상품입니다. 4세대 실비보험에서는 유병자 실비보험의 보장 범위가 확대되고 보험료도 합리적으로 조정되었습니다. 만약 본인의 건강 상태로 인해 가입이 망설여진다면, 전문 상담을 통해 유병자 실비보험을 알아보는 것도 좋은 방법입니다.</p>
+
+      <h3>4. 특약 활용 및 보장 내용 꼼꼼히 체크하기</h3>
+      <p>**비갱신형 실비보험**은 주계약 외에도 다양한 특약이 존재합니다. 도수치료, 비급여 주사, MRI/MRA 촬영 등 비급여 진료에 대한 특약을 활용하여 필요한 보장만 선택적으로 추가할 수 있습니다. 4세대 실비보험에서는 특약 가입 여부에 따라 보험료가 달라지므로, 본인의 생활 패턴과 건강 상태에 맞춰 특약을 선택해야 합니다. 과도한 특약은 보험료 부담을 가중시키므로, 불필요한 특약은 과감하게 제외하고 **실비보험 추천**을 받는 것이 좋습니다.</p>
+
+      <h3>5. 공인된 외부 정보 활용하기 (신뢰성 확보)</h3>
+      <p>보험 상품을 선택할 때는 객관적인 정보를 바탕으로 판단해야 합니다. **금융감독원**이나 **한국소비자원** 등의 공인된 기관에서 제공하는 정보를 활용하여 각 보험사의 안정성과 약관 내용을 확인하는 것이 중요합니다. 또한, **보험협회** 등에서 제공하는 비교 공시 자료를 참고하면 객관적인 상품 비교가 가능합니다.</p>
+    </section>
+
+    <div class="form-section">
+        <h3>실비보험 가입 상태 및 필요 보장 항목 체크리스트</h3>
+        <p>나의 보험 가입 상태를 확인하고, 필요한 보장 항목을 체크해 보세요. (체크리스트를 통해 체류 시간 증가 유도)</p>
+        <form action="#" method="post">
+            <label><strong>1. 현재 가입 중인 실비보험이 있습니까?</strong></label><br>
+            <input type="radio" name="existing_insurance" value="yes"> 예, 있습니다. (갱신형 / 비갱신형)<br>
+            <input type="radio" name="existing_insurance" value="no"> 아니오, 없습니다.<br>
+            <br>
+            <label><strong>2. 희망하는 실비보험의 보장 유형을 선택해주세요.</strong></label><br>
+            <input type="radio" name="coverage_type" value="premium_focus"> 초기 보험료가 저렴한 상품 (갱신형)<br>
+            <input type="radio" name="coverage_type" value="stability_focus"> 장기적으로 안정적인 보험료 (비갱신형)<br>
+            <br>
+            <label><strong>3. 가장 중요하다고 생각하는 보장 항목은 무엇입니까? (중복 선택 가능)</strong></label><br>
+            <input type="checkbox" name="priority[]" value="hospitalization"> 입원비 보장<br>
+            <input type="checkbox" name="priority[]" value="outpatient"> 통원비 보장<br>
+            <input type="checkbox" name="priority[]" value="non_pay"> 비급여 도수치료 및 주사<br>
+            <input type="checkbox" name="priority[]" value="non_pay_mri"> 비급여 MRI/MRA 촬영<br>
+            <br>
+            <button type="submit">체크리스트 제출 및 맞춤 견적 확인</button>
+        </form>
+      </div>
+
+    <section id="faq">
+      <h2>자주 묻는 질문 (FAQ)</h2>
+      <dl>
+        <dt tabindex="0" aria-expanded="false"><strong>Q. 비갱신형 실비보험의 보험료가 갱신형보다 비싼가요?</strong></dt>
+        <dd>네, 맞습니다. 일반적으로 비갱신형 실비보험은 가입 시점의 보험료가 갱신형보다 높습니다. 갱신형은 초기 보험료가 저렴하지만, 시간이 지나면서 보험료가 인상됩니다. 반면 비갱신형은 초기 보험료를 높게 책정하여 만기 시점까지 보험료를 고정하기 때문에 장기적으로 총 납입액은 비갱신형이 더 저렴해질 수 있습니다. 특히 40대 이후 가입자에게는 비갱신형이 유리합니다.</dd>
+
+        <dt tabindex="0" aria-expanded="false"><strong>Q. 비갱신형 실비보험으로 전환하고 싶어요. 어떻게 해야 하나요?</strong></dt>
+        <dd>기존에 갱신형 실비보험에 가입되어 있더라도, 보험사에 따라 비갱신형 특약으로 전환하거나 새로운 비갱신형 상품으로 재가입할 수 있습니다. 다만, 4세대 실비보험으로 전환할 경우 보장 내용과 자기부담금이 변경될 수 있으므로, 전문가와 상담을 통해 신중하게 결정해야 합니다. 특히 기존 계약 해지 시 해지환급금이 소멸될 수 있으니 주의해야 합니다.</dd>
+
+        <dt tabindex="0" aria-expanded="false"><strong>Q. 4세대 실비보험의 비급여 특약 보험료 차등제는 무엇인가요?</strong></dt>
+        <dd>4세대 실비보험은 비급여 항목 이용량에 따라 다음 해 보험료가 달라지는 차등제를 적용합니다. 비급여 이용이 많은 가입자는 보험료가 할증되고, 비급여 이용이 적은 가입자는 보험료가 할인됩니다. 이는 비급여 의료 이용을 합리화하기 위한 제도입니다. 비급여 항목을 자주 이용할 것으로 예상된다면 비갱신형 실비보험의 특약을 신중하게 선택해야 합니다.</dd>
+
+        <dt tabindex="0" aria-expanded="false"><strong>Q. 유병자도 비갱신형 실비보험에 가입할 수 있나요?</strong></dt>
+        <dd>네, 가능합니다. 최근에는 만성 질환이 있거나 유병력자인 경우에도 가입이 가능한 **유병자 실비보험**이 출시되었습니다. 유병자 실비보험은 일반 실비보험보다 가입 조건이 완화되었지만, 보험료가 다소 높게 책정될 수 있습니다. 비갱신형 유병자 실비보험을 찾고 있다면, 여러 보험사의 상품을 비교하여 최적의 조건을 확인해야 합니다.</dd>
+
+        <dt tabindex="0" aria-expanded="false"><strong>Q. 실비보험 청구는 어떻게 하나요?</strong></dt>
+        <dd>실비보험 청구는 매우 간단합니다. 진료비 영수증, 진료비 세부내역서, 진단서(3만원 초과 시) 등의 서류를 준비하여 보험사 앱이나 홈페이지를 통해 제출하면 됩니다. 대부분의 보험사는 모바일 앱을 통한 간편 청구 서비스를 제공하며, 병원 진료 후 3년 이내에 청구해야 합니다.</dd>
+
+        <dt tabindex="0" aria-expanded="false"><strong>Q. 비갱신형 실비보험의 가입 연령 제한이 있나요?</strong></dt>
+        <dd>네, 대부분의 보험 상품에는 가입 연령 제한이 있습니다. 일반적인 비갱신형 실비보험은 만 60세까지 가입이 가능하며, <strong>유병자 실비보험</strong>은 만 70세 또는 80세까지 가입할 수 있는 상품도 있습니다. 연령이 높을수록 보험료가 상승하므로, 가급적 건강할 때 가입하는 것이 유리합니다.</dd>
+      </dl>
+    </section>
+
+    <section id="contact">
+      <h2>비갱신형 실비보험 무료 견적 신청 및 상담</h2>
+      <p>복잡하고 어려운 **비갱신형 실비보험** 선택, 전문가와 함께하세요. 저희 비교 센터는 2026년 최신 상품 정보를 바탕으로 고객님에게 가장 적합한 **실비보험 추천**을 제공합니다. 아래 양식을 작성해 주시면 전문 컨설턴트가 직접 전화 상담을 통해 상세한 **실비보험 가격**과 **가입 조건**을 안내해 드립니다.</p>
+
+      <div class="form-section">
+        <h3>1:1 맞춤형 컨설팅 신청서</h3>
+        <form action="#" method="post">
+            <input type="text" placeholder="이름을 입력해주세요" required>
+            <input type="text" placeholder="생년월일 (예: 19851201)" required>
+            <input type="tel" placeholder="연락처 (010-xxxx-xxxx)" pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}" required>
+            <label><strong>희망 상담 시간대:</strong></label><br>
+            <select name="consultation_time" style="width: calc(100% - 20px); padding: 12px; margin-bottom: 15px; border-radius: 6px;">
+                <option value="am">오전 (09:00~12:00)</option>
+                <option value="pm1">오후 (13:00~16:00)</option>
+                <option value="pm2">저녁 (17:00~20:00)</option>
+            </select><br>
+            <label><input type="checkbox"> 개인정보 수집 및 이용 동의</label><br>
+            <button type="submit">무료 상담 신청</button>
+        </form>
+      </div>
+
+      <p><strong>전화 문의:</strong> 050-1234-5678 (24시간 상담 가능)</p>
+    </section>
+
+    <section id="external-info">
+        <h2>공인된 외부 기관 정보 활용</h2>
+        <p>현명한 보험 가입을 위해 공신력 있는 기관의 정보를 참고하시길 바랍니다.</p>
+        <ul class="bullet-point">
+            <li><a href="https://www.fss.or.kr/" target="_blank" rel="noopener noreferrer" class="external-link">금융감독원 (FSS)</a>: 금융소비자 정보 포털 '파인'에서 실비보험 약관, 상품 비교 공시 등을 확인하실 수 있습니다.</li>
+            <li><a href="https://www.kca.go.kr/home/main.do" target="_blank" rel="noopener noreferrer" class="external-link">한국소비자원 (KCA)</a>: 보험 관련 피해 사례 및 소비자 보호 정보 등을 확인할 수 있습니다.</li>
+            <li><a href="https://www.law.go.kr/" target="_blank" rel="noopener noreferrer" class="external-link">법제처 국가법령정보센터</a>: 보험 약관에 대한 법률적 해석이나 관련 법규를 찾아볼 수 있습니다.</li>
+            <li><a href="https://www.kidi.or.kr/main/index.do" target="_blank" rel="noopener noreferrer" class="external-link">보험개발원</a>: 보험상품 비교 공시 및 보험 통계 자료를 제공하는 기관입니다.</li>
+            <li><a href="https://namu.wiki/w/%EC%8B%A4%EB%B9%84%EB%B3%B4%ED%97%98" target="_blank" rel="noopener noreferrer" class="external-link">나무위키 실비보험 문서</a>: 일반적인 실비보험에 대한 개념적 정보와 역사적 변천사를 확인할 수 있습니다.</li>
+        </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 비갱신형 실비보험 비교센터. All Rights Reserved.</p>
+    <p>본 페이지는 보험 상품의 비교 정보를 제공하며, 특정 상품의 가입을 강요하지 않습니다. 보험 가입 전 반드시 약관을 확인하시기 바랍니다.</p>
+  </footer>
+
+  <script>
+    // FAQ 아코디언 기능 (접기/펼치기)
+    document.querySelectorAll('dl dt').forEach((dt) => {
+      dt.addEventListener('click', () => {
+        const expanded = dt.getAttribute('aria-expanded') === 'true' || false;
+        dt.setAttribute('aria-expanded', !expanded);
+        dt.classList.toggle('active');
+      });
+      dt.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          dt.click();
+        }
+      });
+    });
+  </script>
+
+
+  
+
